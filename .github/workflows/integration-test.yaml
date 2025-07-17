@@ -1,0 +1,25 @@
+name: Integration Test with Service Container
+
+on: [push]
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    services:
+      flask:
+        image: ghcr.io/${{ github.repository_owner }}/ica2-flask:latest
+        ports:
+          - 8000:8000
+        options: >-
+          --health-cmd="curl --fail http://localhost:8000/health || exit 1"
+          --health-interval=10s
+          --health-retries=3
+          --health-timeout=5s
+          --health-start-period=10s
+
+    steps:
+      - name: Wait for service
+        run: sleep 30
+      - name: Curl test
+        run: curl http://localhost:8000/health
+

@@ -1,0 +1,15 @@
+name: Test on Self-Hosted Runners
+
+on: [workflow_dispatch]
+
+jobs:
+  linux-runner:
+    runs-on: [self-hosted, linux]
+    steps:
+      - run: echo "Running on Linux self-hosted runner"
+
+  windows-runner:
+    runs-on: [self-hosted, windows]
+    steps:
+      - run: echo "Running on Windows self-hosted runner"
+

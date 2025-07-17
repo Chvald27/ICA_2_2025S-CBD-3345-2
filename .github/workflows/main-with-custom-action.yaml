@@ -1,0 +1,16 @@
+name: Workflow with Custom Action
+
+on: [push]
+
+jobs:
+  custom:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run custom setup
+        uses: ./.github/actions/setup-python-env
+
+      - name: Run tests
+        run: pytest tests/test_app.py
+

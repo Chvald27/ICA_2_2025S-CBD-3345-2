@@ -1,0 +1,19 @@
+name: Run Tests and Upload Artifacts
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./custom-actions/setup-python-env
+      - name: Run tests
+        run: |
+          mkdir -p test-reports
+          pytest tests/test_app.py --junitxml=test-reports/results.xml
+      - uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: test-reports/results.xml
+
