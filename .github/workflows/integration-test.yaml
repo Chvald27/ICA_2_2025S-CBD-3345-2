@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       flask:
-        image: ghcr.io/${{ github.repository_owner }}/ica2-flask:latest
+        image: ghcr.io/chvald27/ica2-flask:latest
         ports:
           - 8000:8000
         options: >-
