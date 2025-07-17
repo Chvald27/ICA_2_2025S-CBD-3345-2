@@ -1,6 +1,8 @@
 name: Test on Self-Hosted Runners
 
-on: [workflow_dispatch]
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
   linux-runner:
